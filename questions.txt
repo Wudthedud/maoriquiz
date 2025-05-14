@@ -1,0 +1,4 @@
+What is the Maori word for 'red'?|Whero|Kakariki|Kowhai|Kikorangi|0
+What is the Maori word for 'green'?|Kakariki|Whero|Kowhai|Kikorangi|0
+What is the Maori word for 'yellow'?|Kowhai|Whero|Kakariki|Kikorangi|0
+What is the Maori word for 'blue'?|Kikorangi|Whero|Kakariki|Kowhai|0
