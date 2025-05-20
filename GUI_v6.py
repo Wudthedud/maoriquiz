@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from quizengine import Questions
+from score import HighScore, Score
 
 class Start:
     """Start screen class for the Maori Quiz Game."""
@@ -72,26 +73,27 @@ class GUI:
             (q['question'], q['choices'], q['answer_index'])
             for q in self.questions_engine.questions
         ]
-        self.current = 0
-        self.score = 0
+        self.score_manager = Score()
         self.highscore_manager = HighScore()
 
     def show_game_screen(self):
         """Destroys the start screen and shows the first game question."""
         self.start_screen.frame.destroy()
-        self.current = 0
-        self.score = 0
+        self.score_manager.reset()
         self.show_question()
 
     def show_question(self, correct_last=None):
         """Shows the next question or final score."""
         if correct_last is not None:
             if correct_last:
-                self.score += 1
-            self.current += 1
-        if self.current < 10:
-            q, choices, answer_index = self.questions[self.current]
-            self.game_screen = GameGUI(self.root, q, choices, answer_index, self.show_question, self.score, self.current)
+                self.score_manager.increment_score()
+            self.score_manager.next_question()
+        if self.score_manager.get_current() < 10:
+            q, choices, answer_index = self.questions[self.score_manager.get_current()]
+            self.game_screen = GameGUI(
+                self.root, q, choices, answer_index, self.show_question,
+                self.score_manager.get_score(), self.score_manager.get_current()
+            )
         else:
             self.show_final_score()
 
@@ -99,10 +101,9 @@ class GUI:
         """Displays the final score to the user."""
         frame = ctk.CTkFrame(self.root)
         frame.pack(expand=True, fill="both")
-        label = ctk.CTkLabel(frame, text=f"Quiz Complete!\nYour score: {self.score}/10", font=("Arial", 28))
+        label = ctk.CTkLabel(frame, text=f"Quiz Complete!\nYour score: {self.score_manager.get_score()}/10", font=("Arial", 28))
         label.pack(pady=60)
-        # Update high score if necessary
-        self.highscore_manager.update_highscore(self.score)
+        self.highscore_manager.update_highscore(self.score_manager.get_score())
         highscore_label = ctk.CTkLabel(frame, text=f"High score: {self.highscore_manager.get_highscore()}", font=("Arial", 22))
         highscore_label.pack(pady=10)
         quit_btn = ctk.CTkButton(frame, text="Quit", font=("Arial", 18), command=self.root.destroy)
@@ -111,32 +112,6 @@ class GUI:
     def run(self):
         """Starts the customtkinter main event loop."""
         self.root.mainloop()
-
-class HighScore:
-    """Handles reading and updating the high score from a text file."""
-    def __init__(self, filepath="highscore.txt"):
-        """Initializes the HighScore class and loads the current high score."""
-        self.filepath = filepath
-        self.highscore = self.load_highscore()
-
-    def load_highscore(self):
-        """Loads the high score from the file."""
-        try:
-            with open(self.filepath, 'r', encoding='utf-8') as f:
-                return int(f.read().strip())
-        except (FileNotFoundError, ValueError):
-            return 0
-
-    def update_highscore(self, score):
-        """Updates the high score in the file if the new score is higher."""
-        if score > self.highscore:
-            self.highscore = score
-            with open(self.filepath, 'w', encoding='utf-8') as f:
-                f.write(str(score))
-
-    def get_highscore(self):
-        """Returns the current high score."""
-        return self.highscore
 
 if __name__ == "__main__":
     gui = GUI()

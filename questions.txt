@@ -1,10 +1,10 @@
-What is the Maori word for 'red'?|Whero|Kakariki|Kowhai|Kikorangi|0
-What is the Maori word for 'green'?|Kakariki|Whero|Kowhai|Kikorangi|0
-What is the Maori word for 'yellow'?|Kowhai|Whero|Kakariki|Kikorangi|0
-What is the Maori word for 'blue'?|Kikorangi|Whero|Kakariki|Kowhai|0
-What is the Maori word for 'black'?|Pango|Ma|Kikorangi|Kowhai|0
-What is the Maori word for 'white'?|Ma|Pango|Whero|Kakariki|0
-What is the Maori word for 'brown'?|Parauri|Kakariki|Ma|Pango|0
-What is the Maori word for 'orange'?|Karaka|Kowhai|Whero|Kikorangi|0
-What is the Maori word for 'pink'?|Mawhero|Kakariki|Kowhai|Kikorangi|0
-What is the Maori word for 'purple'?|Waiporoporo|Kakariki|Kowhai|Kikorangi|0
+Question 1?|1|2|3|4|0
+Question 2?|1|2|3|4|1
+Question 3?|1|2|3|4|2
+Question 4?|1|2|3|4|3
+Question 5?|1|2|3|4|0
+Question 6?|1|2|3|4|1
+Question 7?|1|2|3|4|2
+Question 8?|1|2|3|4|3
+Question 9?|1|2|3|4|0
+Question 10?|1|2|3|4|1
