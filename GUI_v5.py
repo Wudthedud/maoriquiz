@@ -80,6 +80,7 @@ class GUI:
         ]
         self.current = 0
         self.score = 0
+        self.highscore_manager = HighScore()
 
     def show_game_screen(self):
         """Destroys the start screen and shows the first game question."""
@@ -106,12 +107,42 @@ class GUI:
         frame.pack(expand=True, fill="both")
         label = ctk.CTkLabel(frame, text=f"Quiz Complete!\nYour score: {self.score}/10", font=("Arial", 28))
         label.pack(pady=60)
+        # Update high score if necessary
+        self.highscore_manager.update_highscore(self.score)
+        highscore_label = ctk.CTkLabel(frame, text=f"High score: {self.highscore_manager.get_highscore()}", font=("Arial", 22))
+        highscore_label.pack(pady=10)
         quit_btn = ctk.CTkButton(frame, text="Quit", font=("Arial", 18), command=self.root.destroy)
         quit_btn.pack(pady=20)
 
     def run(self):
         """Starts the customtkinter main event loop."""
         self.root.mainloop()
+
+class HighScore:
+    """Handles reading and updating the high score from a text file."""
+    def __init__(self, filepath="highscore.txt"):
+        """Initializes the HighScore class and loads the current high score."""
+        self.filepath = filepath
+        self.highscore = self.load_highscore()
+
+    def load_highscore(self):
+        """Loads the high score from the file."""
+        try:
+            with open(self.filepath, 'r') as f:
+                return int(f.read().strip())
+        except (FileNotFoundError, ValueError):
+            return 0
+
+    def update_highscore(self, score):
+        """Updates the high score in the file if the new score is higher."""
+        if score > self.highscore:
+            self.highscore = score
+            with open(self.filepath, 'w') as f:
+                f.write(str(score))
+
+    def get_highscore(self):
+        """Returns the current high score."""
+        return self.highscore
 
 if __name__ == "__main__":
     gui = GUI()
