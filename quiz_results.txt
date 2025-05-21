@@ -1,0 +1,76 @@
+Quiz Results
+========================================
+Score: 10/10
+
+Q1: Question 1?
+   1. 1 << Your answer (Correct)
+   2. 2 
+   3. 3 
+   4. 4 
+Result: Correct
+------------------------------
+Q2: Question 2?
+   1. 1 
+   2. 2 << Your answer (Correct)
+   3. 3 
+   4. 4 
+Result: Correct
+------------------------------
+Q3: Question 3?
+   1. 1 
+   2. 2 
+   3. 3 << Your answer (Correct)
+   4. 4 
+Result: Correct
+------------------------------
+Q4: Question 4?
+   1. 1 
+   2. 2 
+   3. 3 
+   4. 4 << Your answer (Correct)
+Result: Correct
+------------------------------
+Q5: Question 5?
+   1. 1 << Your answer (Correct)
+   2. 2 
+   3. 3 
+   4. 4 
+Result: Correct
+------------------------------
+Q6: Question 6?
+   1. 1 
+   2. 2 << Your answer (Correct)
+   3. 3 
+   4. 4 
+Result: Correct
+------------------------------
+Q7: Question 7?
+   1. 1 
+   2. 2 
+   3. 3 << Your answer (Correct)
+   4. 4 
+Result: Correct
+------------------------------
+Q8: Question 8?
+   1. 1 
+   2. 2 
+   3. 3 
+   4. 4 << Your answer (Correct)
+Result: Correct
+------------------------------
+Q9: Question 9?
+   1. 1 << Your answer (Correct)
+   2. 2 
+   3. 3 
+   4. 4 
+Result: Correct
+------------------------------
+Q10: Question 10?
+   1. 1 
+   2. 2 << Your answer (Correct)
+   3. 3 
+   4. 4 
+Result: Correct
+------------------------------
+
+End of Results

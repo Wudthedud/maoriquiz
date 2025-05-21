@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from quizengine import Questions
-from score import HighScore, Score
+from score import HighScore, Score, ScoreExport
 
 class Start:
     """Start screen class for the Maori Quiz Game."""
@@ -75,11 +75,15 @@ class GUI:
         ]
         self.score_manager = Score()
         self.highscore_manager = HighScore()
+        self.export_manager = ScoreExport()
+        self.user_answers = []
 
     def show_game_screen(self):
         """Destroys the start screen and shows the first game question."""
         self.start_screen.frame.destroy()
         self.score_manager.reset()
+        self.user_answers = []
+        self.export_manager = ScoreExport()
         self.show_question()
 
     def show_question(self, correct_last=None):
@@ -90,12 +94,32 @@ class GUI:
             self.score_manager.next_question()
         if self.score_manager.get_current() < 10:
             q, choices, answer_index = self.questions[self.score_manager.get_current()]
+            # If not first question, record the user's answer for the previous question
+            if self.score_manager.get_current() > 0:
+                prev_idx = self.score_manager.get_current() - 1
+                prev_q, prev_choices, prev_answer_index = self.questions[prev_idx]
+                user_answer = self.last_user_answer
+                self.export_manager.add_result(prev_q, prev_choices, user_answer, prev_answer_index)
             self.game_screen = GameGUI(
-                self.root, q, choices, answer_index, self.show_question,
+                self.root, q, choices, answer_index, self._on_next_question,
                 self.score_manager.get_score(), self.score_manager.get_current()
             )
         else:
+            # Record the last answer
+            if hasattr(self, 'last_user_answer'):
+                prev_idx = self.score_manager.get_current() - 1
+                prev_q, prev_choices, prev_answer_index = self.questions[prev_idx]
+                self.export_manager.add_result(prev_q, prev_choices, self.last_user_answer, prev_answer_index)
             self.show_final_score()
+
+    def _on_next_question(self, selected_correct):
+        # Store the last selected answer index for export
+        if self.game_screen:
+            for idx, btn in enumerate(self.game_screen.choice_buttons):
+                if btn.cget('state') == 'disabled' and btn.cget('fg_color') in ("green", "red"):
+                    self.last_user_answer = idx
+                    break
+        self.show_question(selected_correct)
 
     def show_final_score(self):
         """Displays the final score to the user."""
@@ -106,8 +130,17 @@ class GUI:
         self.highscore_manager.update_highscore(self.score_manager.get_score())
         highscore_label = ctk.CTkLabel(frame, text=f"High score: {self.highscore_manager.get_highscore()}", font=("Arial", 22))
         highscore_label.pack(pady=10)
+        export_btn = ctk.CTkButton(frame, text="Export Results", font=("Arial", 18), command=self.export_results)
+        export_btn.pack(pady=10)
         quit_btn = ctk.CTkButton(frame, text="Quit", font=("Arial", 18), command=self.root.destroy)
         quit_btn.pack(pady=20)
+
+    def export_results(self):
+        """Exports the quiz results to a formatted text file."""
+        self.export_manager.export(self.score_manager.get_score(), 10)
+        # Optionally, show a message or dialog to the user
+        export_label = ctk.CTkLabel(self.root, text="Results exported to quiz_results.txt", font=("Arial", 16), text_color="green")
+        export_label.place(relx=0.5, rely=0.95, anchor="center")
 
     def run(self):
         """Starts the customtkinter main event loop."""

@@ -51,3 +51,38 @@ class Score:
     def get_current(self):
         """Returns the current question index."""
         return self.current
+
+class ScoreExport:
+    """Handles exporting the quiz results to a formatted text file."""
+    def __init__(self, export_path="quiz_results.txt"):
+        """Initializes the export path and prepares storage for results."""
+        self.export_path = export_path
+        self.results = []
+
+    def add_result(self, question, choices, user_answer, correct_index):
+        """Adds a result for a single question."""
+        correct = (user_answer == correct_index)
+        self.results.append({
+            'question': question,
+            'choices': choices,
+            'user_answer': user_answer,
+            'correct_index': correct_index,
+            'correct': correct
+        })
+
+    def export(self, score, total):
+        """Exports the results to a formatted text file."""
+        with open(self.export_path, 'w', encoding='utf-8') as f:
+            f.write(f"Quiz Results\n{'='*40}\n")
+            f.write(f"Score: {score}/{total}\n\n")
+            for idx, res in enumerate(self.results, 1):
+                f.write(f"Q{idx}: {res['question']}\n")
+                for i, choice in enumerate(res['choices']):
+                    marker = ''
+                    if i == res['user_answer']:
+                        marker = '<< Your answer'
+                    if i == res['correct_index']:
+                        marker = marker + ' (Correct)' if marker else '(Correct)'
+                    f.write(f"   {i+1}. {choice} {marker}\n")
+                f.write(f"Result: {'Correct' if res['correct'] else 'Incorrect'}\n{'-'*30}\n")
+            f.write("\nEnd of Results\n")
