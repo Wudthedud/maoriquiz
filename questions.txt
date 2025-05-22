@@ -1,10 +1,20 @@
-Question 1?|1|2|3|4|0
-Question 2?|1|2|3|4|1
-Question 3?|1|2|3|4|2
-Question 4?|1|2|3|4|3
-Question 5?|1|2|3|4|0
-Question 6?|1|2|3|4|1
-Question 7?|1|2|3|4|2
-Question 8?|1|2|3|4|3
-Question 9?|1|2|3|4|0
-Question 10?|1|2|3|4|1
+easy|What is the Maori word for family?|Whānau|Iwi|Kura|Kai|0
+easy|What is the Maori word for food?|Kai|Whenua|Waka|Marae|0
+easy|What is the Maori word for school?|Kura|Whānau|Iwi|Kai|0
+easy|What is the Maori word for canoe?|Waka|Kai|Kura|Iwi|0
+easy|What is the Maori word for land?|Whenua|Kai|Kura|Iwi|0
+easy|What is the Maori word for tribe?|Iwi|Kai|Kura|Whānau|0
+easy|What is the Maori word for meeting place?|Marae|Kai|Kura|Iwi|0
+easy|What is the Maori word for mountain?|Maunga|Kai|Kura|Iwi|0
+easy|What is the Maori word for river?|Awa|Kai|Kura|Iwi|0
+easy|What is the Maori word for sea?|Moana|Kai|Kura|Iwi|0
+hard|What is the Maori word for ancestor?|Tūpuna|Whenua|Kura|Iwi|0
+hard|What is the Maori word for language?|Reo|Kai|Kura|Iwi|0
+hard|What is the Maori word for greenstone?|Pounamu|Kai|Kura|Iwi|0
+hard|What is the Maori word for chief?|Rangatira|Kai|Kura|Iwi|0
+hard|What is the Maori word for welcome ceremony?|Pōwhiri|Kai|Kura|Iwi|0
+hard|What is the Maori word for farewell?|Poroporoaki|Kai|Kura|Iwi|0
+hard|What is the Maori word for genealogy?|Whakapapa|Kai|Kura|Iwi|0
+hard|What is the Maori word for challenge?|Wero|Kai|Kura|Iwi|0
+hard|What is the Maori word for treasure?|Taonga|Kai|Kura|Iwi|0
+hard|What is the Maori word for carving?|Whakairo|Kai|Kura|Iwi|0

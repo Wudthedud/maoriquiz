@@ -18,7 +18,7 @@ class GUI:
         self.root = tk.Tk()
         self.root.title("Maori Quiz Game")
         self.root.geometry("1080x720")
-        self.start_screen = Start(self.root)
+#        self.start_screen = Start(self.root)
 
     def run(self):
         """Starts the tkinter main event loop."""
