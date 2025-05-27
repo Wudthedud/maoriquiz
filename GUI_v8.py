@@ -1,6 +1,6 @@
 import customtkinter as ctk
-from quizengine import Questions
-from score import HighScore, Score, ScoreExport
+from quizengine_v2 import Questions
+from score_v2 import HighScore, Score, ScoreExport
 import random
 
 class Start:
@@ -120,7 +120,7 @@ class GUI:
                 prev_idx = self.score_manager.get_current() - 1
                 prev_q, prev_choices, prev_answer_index = self.questions[prev_idx]
                 user_answer = self.last_user_answer
-                self.export_manager.add_result(prev_q, prev_choices, user_answer, prev_answer_index)
+                self.questions_engine.add_result(prev_q, prev_choices, user_answer, prev_answer_index)
             self.game_screen = GameGUI(
                 self.root, q, choices, answer_index, self._on_next_question,
                 self.score_manager.get_score(), self.score_manager.get_current(),
@@ -130,7 +130,7 @@ class GUI:
             if hasattr(self, 'last_user_answer'):
                 prev_idx = self.score_manager.get_current() - 1
                 prev_q, prev_choices, prev_answer_index = self.questions[prev_idx]
-                self.export_manager.add_result(prev_q, prev_choices, self.last_user_answer, prev_answer_index)
+                self.questions_engine.add_result(prev_q, prev_choices, self.last_user_answer, prev_answer_index)
             self.show_final_score()
 
     def _on_next_question(self, selected_correct):
@@ -142,13 +142,35 @@ class GUI:
         self.show_question(selected_correct)
 
     def show_final_score(self):
-        """Displays the final score to the user."""
+        """Displays the final score to the user and allows entering a name for the high score only if achieved."""
         frame = ctk.CTkFrame(self.root)
         frame.pack(expand=True, fill="both")
         label = ctk.CTkLabel(frame, text=f"Quiz Complete!\nYour score: {self.score_manager.get_score()}/10", font=("Arial", 28))
-        label.pack(pady=60)
+        label.pack(pady=40)
+        is_new_high = self.score_manager.get_score() > self.highscore_manager.get_highscore()
+        if is_new_high:
+            name_label = ctk.CTkLabel(frame, text="Enter your name (max 12 chars):", font=("Arial", 18))
+            name_label.pack(pady=(10, 0))
+            name_var = ctk.StringVar()
+            name_entry = ctk.CTkEntry(frame, textvariable=name_var, font=("Arial", 16), width=200)
+            name_entry.pack(pady=5)
+            error_label = ctk.CTkLabel(frame, text="", font=("Arial", 14), text_color="red")
+            error_label.pack(pady=(0, 10))
+            def save_highscore():
+                name = name_var.get().strip()
+                if not name:
+                    error_label.configure(text="Name cannot be empty.")
+                    return
+                if len(name) > 12:
+                    error_label.configure(text="Name must be 12 characters or less.")
+                    return
+                self.highscore_manager.update_highscore(self.score_manager.get_score(), name)
+                error_label.configure(text="High score saved!", text_color="green")
+                highscore_label.configure(text=f"High score: {self.highscore_manager.get_highscore()} by {self.highscore_manager.get_highscore_name()}")
+            save_btn = ctk.CTkButton(frame, text="Save High Score", font=("Arial", 16), command=save_highscore)
+            save_btn.pack(pady=5)
         self.highscore_manager.update_highscore(self.score_manager.get_score())
-        highscore_label = ctk.CTkLabel(frame, text=f"High score: {self.highscore_manager.get_highscore()}", font=("Arial", 22))
+        highscore_label = ctk.CTkLabel(frame, text=f"High score: {self.highscore_manager.get_highscore()} by {getattr(self.highscore_manager, 'get_highscore_name', lambda: '---')()}", font=("Arial", 22))
         highscore_label.pack(pady=10)
         export_btn = ctk.CTkButton(frame, text="Export Results", font=("Arial", 18), command=self.export_results)
         export_btn.pack(pady=10)
@@ -165,8 +187,7 @@ class GUI:
 
     def export_results(self):
         """Exports the quiz results to a formatted text file."""
-        self.export_manager.export(self.score_manager.get_score(), 10)
-        # Optionally, show a message or dialog to the user
+        self.questions_engine.export_results(self.score_manager.get_score(), 10)
         export_label = ctk.CTkLabel(self.root, text="Results exported to quiz_results.txt", font=("Arial", 16), text_color="green")
         export_label.place(relx=0.5, rely=0.95, anchor="center")
 
