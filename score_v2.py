@@ -1,39 +1,46 @@
 class HighScore:
-    """Handles high score storage and retrieval, now with player names."""
+    """Handles high score storage and retrieval, now with player names and top 10 leaderboard."""
     def __init__(self, filename="highscore.txt"):
         self.filename = filename
-        self.highscore = 0
-        self.name = "---"
-        self.load_highscore()
+        self.highscores = []
+        self.load_highscores()
 
-    def load_highscore(self):
+    def load_highscores(self):
+        self.highscores = []
         try:
             with open(self.filename, 'r', encoding='utf-8') as f:
-                line = f.readline().strip()
-                if '|' in line:
-                    score, name = line.split('|', 1)
-                    self.highscore = int(score)
-                    self.name = name
-                else:
-                    self.highscore = int(line)
-                    self.name = "---"
+                for line in f:
+                    line = line.strip()
+                    if '|' in line:
+                        score, name = line.split('|', 1)
+                        self.highscores.append((int(score), name))
+            self.highscores.sort(reverse=True, key=lambda x: x[0])
+            self.highscores = self.highscores[:10]
         except Exception:
-            self.highscore = 0
-            self.name = "---"
+            self.highscores = []
 
     def update_highscore(self, score, name=None):
-        if score > self.highscore or (score == self.highscore and name and name != self.name):
-            self.highscore = score
-            if name:
-                self.name = name
-            with open(self.filename, 'w', encoding='utf-8') as f:
-                f.write(f"{score}|{self.name}")
+        if not name:
+            name = "---"
+        self.highscores.append((score, name))
+        self.highscores.sort(reverse=True, key=lambda x: x[0])
+        self.highscores = self.highscores[:10]
+        with open(self.filename, 'w', encoding='utf-8') as f:
+            for s, n in self.highscores:
+                f.write(f"{s}|{n}\n")
 
     def get_highscore(self):
-        return self.highscore
+        if self.highscores:
+            return self.highscores[0][0]
+        return 0
 
     def get_highscore_name(self):
-        return self.name
+        if self.highscores:
+            return self.highscores[0][1]
+        return "---"
+
+    def get_leaderboard(self):
+        return self.highscores
 
 class Score:
     """Handles the user's current score and question index."""
