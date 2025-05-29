@@ -1,5 +1,5 @@
 class HighScore:
-    """Handles high score storage and retrieval, now with player names and top 10 leaderboard."""
+    """Handles high score storage and retrieval, now with player names, difficulty, and top 10 leaderboard."""
     def __init__(self, filename="highscore.txt"):
         self.filename = filename
         self.highscores = []
@@ -12,22 +12,29 @@ class HighScore:
                 for line in f:
                     line = line.strip()
                     if '|' in line:
-                        score, name = line.split('|', 1)
-                        self.highscores.append((int(score), name))
+                        parts = line.split('|')
+                        if len(parts) == 3:
+                            score, name, difficulty = parts
+                        elif len(parts) == 2:
+                            score, name = parts
+                            difficulty = 'easy'
+                        else:
+                            continue
+                        self.highscores.append((int(score), name, difficulty))
             self.highscores.sort(reverse=True, key=lambda x: x[0])
             self.highscores = self.highscores[:10]
         except Exception:
             self.highscores = []
 
-    def update_highscore(self, score, name=None):
+    def update_highscore(self, score, name=None, difficulty='easy'):
         if not name:
             name = "---"
-        self.highscores.append((score, name))
+        self.highscores.append((score, name, difficulty))
         self.highscores.sort(reverse=True, key=lambda x: x[0])
         self.highscores = self.highscores[:10]
         with open(self.filename, 'w', encoding='utf-8') as f:
-            for s, n in self.highscores:
-                f.write(f"{s}|{n}\n")
+            for s, n, d in self.highscores:
+                f.write(f"{s}|{n}|{d}\n")
 
     def get_highscore(self):
         if self.highscores:
@@ -38,6 +45,11 @@ class HighScore:
         if self.highscores:
             return self.highscores[0][1]
         return "---"
+
+    def get_highscore_difficulty(self):
+        if self.highscores:
+            return self.highscores[0][2]
+        return "easy"
 
     def get_leaderboard(self):
         return self.highscores

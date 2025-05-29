@@ -13,9 +13,10 @@ class Start:
         self.label.pack(pady=20)
         if leaderboard:
             leaderboard_text = "Leaderboard (Top 10):\n"
-            for idx, (score, name) in enumerate(leaderboard, 1):
-                leaderboard_text += f"{idx}. {name[:12]:<12} {score}\n"
-            self.leaderboard_label = ctk.CTkLabel(self.frame, text=leaderboard_text.strip(), font=("Consolas", 16), justify="left")
+            leaderboard_text += f"{'#':<3}{'Name':<13}{'Score':<7}{'Difficulty':<10}\n"
+            for idx, (score, name, difficulty) in enumerate(leaderboard, 1):
+                leaderboard_text += f"{idx:<3}{name[:12]:<13}{score:<7}{difficulty:<10}\n"
+            self.leaderboard_label = ctk.CTkLabel(self.frame, text=leaderboard_text.strip(), font=("Consolas", 15), justify="left")
             self.leaderboard_label.pack(pady=(0, 20))
         self.difficulty = ctk.StringVar(value="easy")
         self.difficulty_label = ctk.CTkLabel(self.frame, text="Select Difficulty:", font=("Arial", 18))
@@ -153,7 +154,7 @@ class GUI:
         frame.pack(expand=True, fill="both")
         label = ctk.CTkLabel(frame, text=f"Quiz Complete!\nYour score: {self.score_manager.get_score()}/10", font=("Arial", 28))
         label.pack(pady=40)
-        is_new_high = self.score_manager.get_score() > self.highscore_manager.get_highscore()
+        is_new_high = self._is_new_highscore(self.score_manager.get_score())
         if is_new_high:
             name_label = ctk.CTkLabel(frame, text="Enter your name (max 12 chars):", font=("Arial", 18))
             name_label.pack(pady=(10, 0))
@@ -170,13 +171,12 @@ class GUI:
                 if len(name) > 12:
                     error_label.configure(text="Name must be 12 characters or less.")
                     return
-                self.highscore_manager.update_highscore(self.score_manager.get_score(), name)
+                self.highscore_manager.update_highscore(self.score_manager.get_score(), name, self.difficulty)
                 error_label.configure(text="High score saved!", text_color="green")
-                highscore_label.configure(text=f"High score: {self.highscore_manager.get_highscore()} by {self.highscore_manager.get_highscore_name()}")
+                highscore_label.configure(text=self._get_leaderboard_text())
             save_btn = ctk.CTkButton(frame, text="Save High Score", font=("Arial", 16), command=save_highscore)
             save_btn.pack(pady=5)
-        self.highscore_manager.update_highscore(self.score_manager.get_score())
-        highscore_label = ctk.CTkLabel(frame, text=f"High score: {self.highscore_manager.get_highscore()} by {getattr(self.highscore_manager, 'get_highscore_name', lambda: '---')()}", font=("Arial", 22))
+        highscore_label = ctk.CTkLabel(frame, text=self._get_leaderboard_text(), font=("Consolas", 15), justify="left")
         highscore_label.pack(pady=10)
         export_btn = ctk.CTkButton(frame, text="Export Results", font=("Arial", 18), command=self.export_results)
         export_btn.pack(pady=10)
@@ -200,6 +200,18 @@ class GUI:
     def run(self):
         """Starts the customtkinter main event loop."""
         self.root.mainloop()
+
+    def _is_new_highscore(self, score):
+        """Checks if the given score is a new high score."""
+        return score > self.highscore_manager.get_highscore()
+
+    def _get_leaderboard_text(self):
+        leaderboard = self.highscore_manager.get_leaderboard()
+        text = "Leaderboard (Top 10):\n"
+        text += f"{'#':<3}{'Name':<13}{'Score':<7}{'Difficulty':<10}\n"
+        for idx, (score, name, difficulty) in enumerate(leaderboard, 1):
+            text += f"{idx:<3}{name[:12]:<13}{score:<7}{difficulty:<10}\n"
+        return text.strip()
 
 if __name__ == "__main__":
     gui = GUI()
