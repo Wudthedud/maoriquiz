@@ -1,3 +1,10 @@
-4|Wududau|easy
-4|adflkj|easy
-3|Daniel Wu|easy
+1|Alice|easy
+1|Bob|hard
+1|Charlie|easy
+1|Daisy|hard
+1|Ethan|easy
+1|Fiona|hard
+1|George|easy
+1|Hannah|hard
+1|Ivan|easy
+1|Julia|hard

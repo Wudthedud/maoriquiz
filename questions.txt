@@ -1,20 +1,20 @@
-easy|What is the Maori word for family?|Whānau|Iwi|Kura|Kai|0
-easy|What is the Maori word for food?|Kai|Whenua|Waka|Marae|0
-easy|What is the Maori word for school?|Kura|Whānau|Iwi|Kai|0
-easy|What is the Maori word for canoe?|Waka|Kai|Kura|Iwi|0
-easy|What is the Maori word for land?|Whenua|Kai|Kura|Iwi|0
-easy|What is the Maori word for tribe?|Iwi|Kai|Kura|Whānau|0
-easy|What is the Maori word for meeting place?|Marae|Kai|Kura|Iwi|0
-easy|What is the Maori word for mountain?|Maunga|Kai|Kura|Iwi|0
-easy|What is the Maori word for river?|Awa|Kai|Kura|Iwi|0
-easy|What is the Maori word for sea?|Moana|Kai|Kura|Iwi|0
-hard|What is the Maori word for ancestor?|Tūpuna|Whenua|Kura|Iwi|0
-hard|What is the Maori word for language?|Reo|Kai|Kura|Iwi|0
-hard|What is the Maori word for greenstone?|Pounamu|Kai|Kura|Iwi|0
-hard|What is the Maori word for chief?|Rangatira|Kai|Kura|Iwi|0
-hard|What is the Maori word for welcome ceremony?|Pōwhiri|Kai|Kura|Iwi|0
-hard|What is the Maori word for farewell?|Poroporoaki|Kai|Kura|Iwi|0
-hard|What is the Maori word for genealogy?|Whakapapa|Kai|Kura|Iwi|0
-hard|What is the Maori word for challenge?|Wero|Kai|Kura|Iwi|0
-hard|What is the Maori word for treasure?|Taonga|Kai|Kura|Iwi|0
-hard|What is the Maori word for carving?|Whakairo|Kai|Kura|Iwi|0
+easy|Test Question 1?|A1|B2|C3|D4|0
+easy|Test Question 2?|A1|B2|C3|D4|1
+easy|Test Question 3?|A1|B2|C3|D4|2
+easy|Test Question 4?|A1|B2|C3|D4|3
+easy|Test Question 5?|A5|B6|C7|D8|0
+easy|Test Question 6?|A5|B6|C7|D8|1
+easy|Test Question 7?|A5|B6|C7|D8|2
+easy|Test Question 8?|A5|B6|C7|D8|3
+easy|Test Question 9?|A9|B10|C11|D12|0
+easy|Test Question 10?|A9|B10|C11|D12|1
+hard|Test Question 1?|A1|B2|C3|D4|0
+hard|Test Question 2?|A1|B2|C3|D4|1
+hard|Test Question 3?|A1|B2|C3|D4|2
+hard|Test Question 4?|A1|B2|C3|D4|3
+hard|Test Question 5?|A5|B6|C7|D8|0
+hard|Test Question 6?|A5|B6|C7|D8|1
+hard|Test Question 7?|A5|B6|C7|D8|2
+hard|Test Question 8?|A5|B6|C7|D8|3
+hard|Test Question 9?|A9|B10|C11|D12|0
+hard|Test Question 10?|A9|B10|C11|D12|1
