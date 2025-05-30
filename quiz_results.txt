@@ -1,45 +1,39 @@
-Mode: Easy
-Score: 4
+Mode: Hard
+Score: 6
 
-Q1: Test Question 1?
-   1. A1 << Your answer (Correct)
-   2. D4 
-   3. C3 
-   4. B2 
+Q1: Test Question 2?
+  Your answer: B2
+  Correct answer: B2
 
-Q2: Test Question 5?
-   1. B6 
-   2. A5 (Correct)
-   3. D8 
-   4. C7 << Your answer
+Q2: Test Question 3?
+  Your answer: C3
+  Correct answer: C3
 
-Q3: Test Question 8?
-   1. B6 
-   2. C7 
-   3. D8 << Your answer (Correct)
-   4. A5 
+Q3: Test Question 5?
+  Your answer: A5
+  Correct answer: A5
 
-Q4: Test Question 9?
-   1. A9 (Correct)
-   2. D12 << Your answer
-   3. B10 
-   4. C11 
+Q4: Test Question 7?
+  Your answer: C7
+  Correct answer: C7
 
-Q5: Test Question 8?
-   1. C7 
-   2. B6 
-   3. D8 << Your answer (Correct)
-   4. A5 
+Q5: Test Question 1?
+  Your answer: A1
+  Correct answer: A1
 
-Q6: Test Question 2?
-   1. D4 
-   2. C3 
-   3. B2 << Your answer (Correct)
-   4. A1 
+Q6: Test Question 6?
+  Your answer: D6
+  Correct answer: B6
 
-Q7: Test Question 1?
-   1. A1 (Correct)
-   2. C3 
-   3. D4 
-   4. B2 << Your answer
+Q7: Test Question 8?
+  Your answer: C8
+  Correct answer: D8
+
+Q8: Test Question 9?
+  Your answer: A9
+  Correct answer: A9
+
+Q9: Test Question 4?
+  Your answer: C5
+  Correct answer: D4
 

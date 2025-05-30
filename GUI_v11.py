@@ -1,7 +1,7 @@
 import random
 import customtkinter as ctk
-from quizengine_v2 import Questions
-from score_lives import ScoreLives
+from quizengine_v3 import Questions
+from score_v4 import ScoreManager
 from score_v3 import HighScore, ScoreExport
 
 class Start:
@@ -182,11 +182,8 @@ class GUI:
         self.game_screen = None
         self.difficulty = "easy"
         self.questions_engine = Questions("questions.txt")
-        self.questions = [
-            (q['question'], q['choices'], q['answer_index'])
-            for q in self.questions_engine.questions
-        ]
-        self.score_manager = ScoreLives()
+        self.questions = self.questions_engine.get_all_questions()
+        self.score_manager = ScoreManager()
         self.export_manager = ScoreExport()
         self.user_answers = []
         self.last_user_answer = None
@@ -196,31 +193,21 @@ class GUI:
         """Destroys the start screen and shows the first game question."""
         self.difficulty = difficulty
         self.start_screen.frame.destroy()
-        self.score_manager = ScoreLives()
+        self.score_manager = ScoreManager()
         self.user_answers = []
         self.answered_questions = []
         self.export_manager = ScoreExport()
-        self.questions_engine = Questions("questions.txt", difficulty=difficulty) if hasattr(Questions, 'difficulty') else Questions("questions.txt")
-        self.questions = []
-        for q in self.questions_engine.questions:
-            choices = q['choices'][:]
-            correct = choices[q['answer_index']]
-            random.shuffle(choices)
-            answer_index = choices.index(correct)
-            self.questions.append((q['question'], choices, answer_index))
+        self.questions_engine = Questions("questions.txt", difficulty=difficulty)
+        self.questions_engine.shuffle_questions()
+        self.questions = self.questions_engine.get_all_questions()
         random.shuffle(self.questions)
         self.show_question()
 
     def show_question(self, correct_last=None):
         if not self.questions:
-            self.questions_engine = Questions("questions.txt", difficulty=self.difficulty) if hasattr(Questions, 'difficulty') else Questions("questions.txt")
-            for q in self.questions_engine.questions:
-                choices = q['choices'][:]
-                correct = choices[q['answer_index']]
-                random.shuffle(choices)
-                answer_index = choices.index(correct)
-                self.questions.append((q['question'], choices, answer_index))
-            random.shuffle(self.questions)
+            self.questions_engine = Questions("questions.txt", difficulty=self.difficulty)
+            self.questions_engine.shuffle_questions()
+            self.questions = self.questions_engine.get_all_questions()
         self.current_q = self.questions.pop()
         q, choices, answer_index = self.current_q
         if correct_last is not None:
