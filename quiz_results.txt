@@ -1,76 +1,45 @@
-Quiz Results
-========================================
-Score: 10/10
+Mode: Easy
+Score: 4
 
-Q1: Question 1?
-   1. 1 << Your answer (Correct)
-   2. 2 
-   3. 3 
-   4. 4 
-Result: Correct
-------------------------------
-Q2: Question 2?
-   1. 1 
-   2. 2 << Your answer (Correct)
-   3. 3 
-   4. 4 
-Result: Correct
-------------------------------
-Q3: Question 3?
-   1. 1 
-   2. 2 
-   3. 3 << Your answer (Correct)
-   4. 4 
-Result: Correct
-------------------------------
-Q4: Question 4?
-   1. 1 
-   2. 2 
-   3. 3 
-   4. 4 << Your answer (Correct)
-Result: Correct
-------------------------------
-Q5: Question 5?
-   1. 1 << Your answer (Correct)
-   2. 2 
-   3. 3 
-   4. 4 
-Result: Correct
-------------------------------
-Q6: Question 6?
-   1. 1 
-   2. 2 << Your answer (Correct)
-   3. 3 
-   4. 4 
-Result: Correct
-------------------------------
-Q7: Question 7?
-   1. 1 
-   2. 2 
-   3. 3 << Your answer (Correct)
-   4. 4 
-Result: Correct
-------------------------------
-Q8: Question 8?
-   1. 1 
-   2. 2 
-   3. 3 
-   4. 4 << Your answer (Correct)
-Result: Correct
-------------------------------
-Q9: Question 9?
-   1. 1 << Your answer (Correct)
-   2. 2 
-   3. 3 
-   4. 4 
-Result: Correct
-------------------------------
-Q10: Question 10?
-   1. 1 
-   2. 2 << Your answer (Correct)
-   3. 3 
-   4. 4 
-Result: Correct
-------------------------------
+Q1: Test Question 1?
+   1. A1 << Your answer (Correct)
+   2. D4 
+   3. C3 
+   4. B2 
 
-End of Results
+Q2: Test Question 5?
+   1. B6 
+   2. A5 (Correct)
+   3. D8 
+   4. C7 << Your answer
+
+Q3: Test Question 8?
+   1. B6 
+   2. C7 
+   3. D8 << Your answer (Correct)
+   4. A5 
+
+Q4: Test Question 9?
+   1. A9 (Correct)
+   2. D12 << Your answer
+   3. B10 
+   4. C11 
+
+Q5: Test Question 8?
+   1. C7 
+   2. B6 
+   3. D8 << Your answer (Correct)
+   4. A5 
+
+Q6: Test Question 2?
+   1. D4 
+   2. C3 
+   3. B2 << Your answer (Correct)
+   4. A1 
+
+Q7: Test Question 1?
+   1. A1 (Correct)
+   2. C3 
+   3. D4 
+   4. B2 << Your answer
+

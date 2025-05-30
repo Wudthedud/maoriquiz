@@ -1,4 +1,4 @@
-from GUI_v10 import GUI
+from GUI_v11 import GUI
 
 def main():
     app = GUI()
