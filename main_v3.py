@@ -1,5 +1,8 @@
-from GUI import GUI
+from GUI_v10 import GUI
 
-if __name__ == "__main__":
+def main():
     app = GUI()
     app.run()
+
+if __name__ == "__main__":
+    main()
