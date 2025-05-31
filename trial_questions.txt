@@ -1,20 +1,5 @@
 [
     {
-        "question": "Welcome to the Maori Quiz Game!",
-        "choices": [],
-        "type": "info"
-    },
-    {
-        "question": "What is the Maori word for 'red'?",
-        "choices": ["Whero", "Kakariki", "Kowhai", "Kikorangi"],
-        "answer_index": 0
-    },
-    {
-        "question": "Test Question",
-        "choices": ["1", "2", "3", "4"],
-        "answer_index": 0
-    },
-    {
         "question": "Test Question 1?",
         "choices": ["A1", "B2", "C3", "D4"],
         "answer_index": 0,
