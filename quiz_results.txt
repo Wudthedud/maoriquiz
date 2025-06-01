@@ -1,22 +1,74 @@
-Mode: Hard
-Score: 2
+Mode: Easy
+Score: 9
 
-Q1: Test Question 1?
-  Your answer: dasw
-  Correct answer: A1
+Q1: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
 
-Q2: Test Question 4?
-  Your answer: D4
-  Correct answer: D4
+Q2: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
 
-Q3: Test Question 8?
-  Your answer: D8
-  Correct answer: D8
+Q3: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
 
-Q4: Test Question 5?
-  Your answer: A2
-  Correct answer: A5
+Q4: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
 
-Q5: Test Question 9?
-  Your answer: sfd
-  Correct answer: A9
+Q5: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
+
+Q6: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
+
+Q7: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
+
+Q8: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
+
+Q9: Which day of the week is Rāhina
+   1. Monday << Your answer (Correct)
+   2. Tuesday 
+   3. Thursday 
+   4. Saturday 
+
+Q10: Which day of the week is Rāhina
+   1. Monday (Correct)
+   2. Tuesday 
+   3. Thursday << Your answer
+   4. Saturday 
+
+Q11: Which day of the week is Rāhina
+   1. Monday (Correct)
+   2. Tuesday 
+   3. Thursday << Your answer
+   4. Saturday 
+
+Q12: Which day of the week is Rāhina
+   1. Monday (Correct)
+   2. Tuesday 
+   3. Thursday << Your answer
+   4. Saturday 
