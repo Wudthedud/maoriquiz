@@ -1,10 +1,10 @@
-10|Alice|easy
-10|User name|easy
-9|Bob|hard
-9|Alice|easy
-8|Charlie|easy
-8|@&123|easy
-7|Daisy|hard
-7|aetafs|hard
-6|Ethan|easy
-6|test2|easy
+13|Zara|hard
+8|Leo|easy
+11|Mia|easy
+7|Oscar|hard
+15|Nina|easy
+9|Kai|easy
+12|Liam|hard
+10|Ava|hard
+14|Noah|easy
+6|Ruby|easy

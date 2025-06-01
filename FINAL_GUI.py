@@ -2,11 +2,14 @@
 This module provides the graphical user interface for the Maori Quiz Game"""
 import random
 import unicodedata
+import os
+import subprocess
 import customtkinter as ctk
 from PIL import Image
-from quizengine_v4 import Questions
-from score_v5 import HighScore, ScoreExport, ScoreManager
-import os
+from FINAL_quizengine import Questions
+from FINAL_score import HighScore, ScoreExport, ScoreManager
+
+
 
 class Start:
     """Start screen class for the Maori Quiz Game."""
@@ -25,7 +28,7 @@ class Start:
             self.frame,
             text=(
                 "Answer as many questions as you can. Each incorrect answer "
-                "results in a heart lost"
+                "results in a heart lost. Please answer in English."
             ),
             font=("Arial", 18)
         )
@@ -288,24 +291,31 @@ class GUI:
             missing_files.append("highscore.txt")
         if not os.path.exists("flag.ico"):
             missing_files.append("flag.ico")
-        for heart_img_name in ["heart.png", "empty_heart.png"]:
-            if not os.path.exists(heart_img_name) or os.path.getsize(heart_img_name) == 0:
+        for heart_img_name in [
+            "heart.png",
+            "empty_heart.png"
+        ]:
+            if not os.path.exists(heart_img_name) or \
+                    os.path.getsize(heart_img_name) == 0:
                 missing_files.append(heart_img_name)
         if missing_files:
             msg = (
                 "The following required file(s) are missing:\n" +
                 "\n".join(missing_files) +
-                "\n\nPlease ensure all required files are present before running the quiz."
+                "\n\nPlease ensure all required files are present before "
+                "running the quiz."
             )
             error_popup = ctk.CTkToplevel(self.root)
             error_popup.title("Missing File(s)")
             error_popup.geometry("500x200")
             label = ctk.CTkLabel(
-                error_popup, text=msg, font=("Arial", 16), text_color="red", justify="center"
+                error_popup, text=msg, font=("Arial", 16), text_color="red",
+                justify="center"
             )
             label.pack(expand=True, fill="both", padx=20, pady=20)
             ok_btn = ctk.CTkButton(
-                error_popup, text="OK", font=("Arial", 16), command=self.root.destroy
+                error_popup, text="OK", font=("Arial", 16),
+                command=self.root.destroy
             )
             ok_btn.pack(pady=10)
             error_popup.transient(self.root)
@@ -346,7 +356,7 @@ class GUI:
         self.answered_questions = []
         self.export_manager = ScoreExport()
         self.questions_engine = Questions(
-            "questions.txt", difficulty=difficulty
+            "questions.txt"
         )
         self.questions_engine.shuffle_questions()
         self.questions = self.questions_engine.get_all_questions()
@@ -359,7 +369,7 @@ class GUI:
         checker for hard mode."""
         if not self.questions:
             self.questions_engine = Questions(
-                "questions.txt", difficulty=self.difficulty
+                "questions.txt"
             )
             self.questions_engine.shuffle_questions()
             self.questions = self.questions_engine.get_all_questions()
@@ -444,7 +454,7 @@ class GUI:
         label = ctk.CTkLabel(
             frame,
             text=(f"Game Over!\nYour score: "
-                  f"{self.score_manager.get_score()}"),
+                f"{self.score_manager.get_score()}"),
             font=("Arial", 28)
         )
         label.pack(pady=20)
@@ -629,11 +639,8 @@ class GUI:
                 )
                 export_label.pack(pady=10)
                 def open_file():
-                    import os
                     os.startfile(os.path.abspath(filename))
                 def open_folder():
-                    import os
-                    import subprocess
                     folder = os.path.dirname(os.path.abspath(filename))
                     subprocess.Popen(f'explorer "{folder}"')
                 btn_frame = ctk.CTkFrame(current_frame, fg_color="transparent")
@@ -684,7 +691,3 @@ class GUI:
             leaderboard=self.highscore_manager.get_leaderboard()
         )
 
-
-if __name__ == "__main__":
-    app = GUI()
-    app.run()

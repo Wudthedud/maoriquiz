@@ -1,1 +1,50 @@
-Which day of the week is Rāhina|Monday|Tuesday|Thursday|Saturday|0
+What does 'Kia ora' mean?|Goodbye|Maybe|Yes|Hello/Thank you|3
+What does 'Haere rā' mean?|Welcome|Goodbye (to one leaving)|Hello|Please|1
+What does 'E noho rā' mean?|Good morning|How are you?|Goodbye (to one staying)|I am well|2
+What does 'Mōrena' mean?|Good night|Good afternoon|Good morning|Good evening|2
+What does 'Pō mārie' mean?|Good day|Sweet dreams|Good afternoon|Good night|3
+What does 'Āe' mean?|No|Maybe|Yes|Thank you|2
+What does 'Kāore' mean?|Yes|I don't know|Maybe|No|3
+What number is 'Tahi'?|Two|Three|One|Four|2
+What number is 'Rua'?|One|Two|Four|Three|1
+What number is 'Toru'?|Four|One|Three|Five|2
+What number is 'Whā'?|Five|Four|Six|Two|1
+What number is 'Rima'?|Six|Seven|Five|Eight|2
+What number is 'Ono'?|Five|Seven|Eight|Six|3
+What number is 'Whitu'?|Six|Eight|Nine|Seven|3
+What number is 'Waru'?|Seven|Nine|Ten|Eight|3
+What number is 'Iwa'?|Eight|Ten|Seven|Nine|3
+What number is 'Tekau'?|Nine|Eleven|Twelve|Ten|3
+What colour is 'Whero'?|Blue|Green|Red|Yellow|2
+What colour is 'Kākāriki'?|Red|Green|Yellow|Black|1
+What colour is 'Mā'?|Black|Blue|White|Brown|2
+What colour is 'Pango'?|White|Black|Grey|Purple|1
+What colour is 'Kikorangi'?|Orange|Red|Blue|Pink|2
+What colour is 'Kōwhai'?|Purple|Yellow|Green|Orange|1
+What colour is 'Parauri'?|Grey|Orange|Black|Brown|3
+What colour is 'Karaka'?|Purple|Red|Orange|Pink|2
+What day of the week is 'Rāhina'?|Sunday|Tuesday|Monday|Wednesday|2
+What day of the week is 'Rātū'?|Monday|Wednesday|Thursday|Tuesday|3
+What day of the week is 'Rāapa'?|Tuesday|Thursday|Wednesday|Friday|2
+What day of the week is 'Rāpare'?|Wednesday|Friday|Saturday|Thursday|3
+What day of the week is 'Rāmere'?|Thursday|Saturday|Sunday|Friday|3
+What day of the week is 'Rāhoroi'?|Friday|Sunday|Monday|Saturday|3
+What day of the week is 'Rātapu'?|Saturday|Monday|Tuesday|Sunday|3
+What month is 'Hānuere'?|February|December|March|January|3
+What month is 'Pēpuere'?|January|March|April|February|3
+What month is 'Māehe'?|April|February|May|March|3
+What month is 'Āperira'?|March|May|June|April|3
+What month is 'Mei'?|June|July|April|May|3
+What month is 'Hune'?|May|July|August|June|3
+What does 'Kai' mean?|Water|Sleep|Work|Food|3
+What does 'Wai' mean?|Food|Milk|Juice|Water|3
+What does 'Whare' mean?|Car|Boat|Garden|House|3
+What does 'Moe' mean?|To wake|To run|To sleep|To play|2
+What does 'Aroha' mean?|Hate|Fear|Joy|Love|3
+What does 'Tamariki' mean?|Parents|Adults|Grandparents|Children|3
+What does 'Māmā' mean?|Father|Aunty|Mother|Sister|2
+What does 'Pāpā' mean?|Mother|Uncle|Brother|Father|3
+What does 'Kuri' mean?|Cat|Bird|Horse|Dog|3
+What does 'Ngeru' mean?|Dog|Mouse|Rabbit|Cat|3
+What does 'Manu' mean?|Fish|Insect|Reptile|Bird|3
+What does 'Ika' mean?|Bird|Mammal|Amphibian|Fish|3
