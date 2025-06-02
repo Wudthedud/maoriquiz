@@ -1,26 +1,44 @@
 Mode: Easy
-Score: 1
+Score: 4
 
-Q1: What does 'Āe' mean?
-   1. No 
-   2. Maybe 
-   3. Yes << Your answer (Correct)
-   4. Thank you 
+Q1: What does 'Kai' mean?
+   1. Water 
+   2. Sleep 
+   3. Work 
+   4. Food << Your answer (Correct)
 
-Q2: What month is 'Pēpuere'?
-   1. January << Your answer
-   2. March 
-   3. April 
-   4. February (Correct)
+Q2: What does 'Whare' mean?
+   1. Car 
+   2. Boat 
+   3. Garden 
+   4. House << Your answer (Correct)
 
-Q3: What does 'Pō mārie' mean?
-   1. Good day << Your answer
-   2. Sweet dreams 
-   3. Good afternoon 
-   4. Good night (Correct)
+Q3: What does 'Wai' mean?
+   1. Food 
+   2. Milk 
+   3. Juice << Your answer
+   4. Water (Correct)
 
-Q4: What number is 'Toru'?
-   1. Four << Your answer
-   2. One 
-   3. Three (Correct)
-   4. Five 
+Q4: What does 'Manu' mean?
+   1. Fish 
+   2. Insect << Your answer
+   3. Reptile 
+   4. Bird (Correct)
+
+Q5: What number is 'Whā'?
+   1. Five 
+   2. Four << Your answer (Correct)
+   3. Six 
+   4. Two 
+
+Q6: What day of the week is 'Rāhoroi'?
+   1. Friday 
+   2. Sunday 
+   3. Monday 
+   4. Saturday << Your answer (Correct)
+
+Q7: What day of the week is 'Rāpare'?
+   1. Wednesday << Your answer
+   2. Friday 
+   3. Saturday 
+   4. Thursday (Correct)

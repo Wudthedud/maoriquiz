@@ -1,21 +1,27 @@
-"""Quiz engine module for loading, managing, and exporting Maori quiz questions
-Provides the Questions class for handling question data and results export."""
+"""Quiz engine module.
+
+Loading, managing, and exporting Maori quiz questions
+Provides the Questions class for handling question data and results export.
+"""
 import random
 
+
 class Questions:
-    """Handles loading and providing quiz questions from a text file, 
-    supporting difficulty filtering and result export."""
+    """Handles loading and providing quiz questions from a text file."""
+
     def __init__(self, filepath):
-        """Initializes the Questions class and loads questions from the 
-        given file."""
+        """Initialize the questions  and loads from the given file."""
         self.questions = []
         self.index = 0
         self.load_questions(filepath)
         self.results = []
 
     def load_questions(self, filepath):
-        """Loads questions from a text file. Each line should be: 
-        question|choice1|choice2|choice3|choice4|answer_index"""
+        """Load questions from a text file.
+
+        Each line should be:
+        question|choice1|choice2|choice3|choice4|answer_index
+        """
         with open(filepath, 'r', encoding='utf-8') as f:
             for line in f:
                 if not line.strip():
@@ -32,7 +38,7 @@ class Questions:
                     })
 
     def add_result(self, question, choices, user_answer, correct_index):
-        """Adds a result entry for export."""
+        """Add a result entry for export."""
         self.results.append({
             'question': question,
             'choices': choices,
@@ -41,7 +47,7 @@ class Questions:
         })
 
     def export_results(self, score, total, filename="quiz_results.txt"):
-        """Exports the quiz results to a formatted text file."""
+        """Export the quiz results to a formatted text file."""
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(f"Score: {score}/{total}\n\n")
             for idx, result in enumerate(self.results, 1):
@@ -61,7 +67,7 @@ class Questions:
         self.results = []
 
     def next_question(self):
-        """Returns the next question and choices, or None if finished."""
+        """Return the next question and choices, or None if finished."""
         if self.index < len(self.questions):
             q = self.questions[self.index]
             self.index += 1
@@ -69,22 +75,21 @@ class Questions:
         return None
 
     def reset(self):
-        """Resets the question index and results to start over."""
+        """Reset the question index and results to start over."""
         self.index = 0
         self.results = []
 
     def get_all_questions(self):
-        """Returns a list of all loaded questions 
-        (question, choices, answer_index)."""
+        """List all questions (question, choices, answer_index)."""
         return [
             (q['question'], q['choices'], q['answer_index'])
             for q in self.questions
         ]
 
     def shuffle_questions(self):
-        """Shuffles the order of the questions."""
+        """Shuffle the order of the questions."""
         random.shuffle(self.questions)
 
     def get_question_count(self):
-        """Returns the number of loaded questions."""
+        """Return the number of loaded questions."""
         return len(self.questions)

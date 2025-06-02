@@ -7,4 +7,4 @@
 9|Kai|easy
 8|Leo|easy
 7|Oscar|hard
-2|PlayerOne|easy
+7|Jeff|easy

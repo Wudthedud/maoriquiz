@@ -120,8 +120,8 @@ graph TD
         FS_USER_ACTION_CHOICE -- "Quit" --> B5;
 
         FS_USER_ACTION_CHOICE -- "Export Results" --> FS_CALL_EXPORT[Call GUI.export_results];
-        FS_CALL_EXPORT --> FS_WRITE_EXPORT_FILE[Write Results to quiz_results.txt];
-        FS_WRITE_EXPORT_FILE --> FS_SHOW_EXPORT_MSG[Show "Results Exported" Message + Open Buttons];
+        FS_CALL_EXPORT --> FS_WRITE_EXPORT_FILE["Write Results to quiz_results.txt"];
+        FS_WRITE_EXPORT_FILE --> FS_SHOW_EXPORT_MSG["Show 'Results Exported' Message + Open Buttons"];
         FS_SHOW_EXPORT_MSG --> FS_SHOW_ACTION_BUTTONS;
 
         FS_USER_ACTION_CHOICE -- "View Results" --> FS_CALL_VIEW[Call GUI.view_results];
@@ -129,5 +129,5 @@ graph TD
         FS_SHOW_VIEW_POPUP -- User Closes Pop-up --> FS_SHOW_ACTION_BUTTONS;
     end
 
-    B10 --> LAUNCH_MAIN_LOOP[Start Main Event Loop (root.mainloop())];
+    B10 --> LAUNCH_MAIN_LOOP["Start Main Event Loop (root.mainloop())"];
     LAUNCH_MAIN_LOOP --> APP_RUNNING((Application Running - Event Driven Until Quit));

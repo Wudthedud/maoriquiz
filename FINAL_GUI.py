@@ -1,5 +1,7 @@
 """Maori Quiz Game GUI using customtkinter.
-This module provides the graphical user interface for the Maori Quiz Game"""
+
+This module provides the graphical user interface for the Maori Quiz Game
+"""
 import random
 import unicodedata
 import os
@@ -12,11 +14,12 @@ import customtkinter as ctk
 from FINAL_quizengine import Questions
 from FINAL_score import HighScore, ScoreExport, ScoreManager
 
+
 class Start:
     """Start screen class for the Maori Quiz Game."""
+
     def __init__(self, master, start_callback=None, leaderboard=None):
-        """Initializes the start screen with a welcome label, leaderboard, 
-        difficulty selection, and a start button."""
+        """Initialize the start screen with a welcome label, instructions."""
         self.frame = ctk.CTkFrame(master)
         self.frame.pack(expand=True, fill="both")
         self.label = ctk.CTkLabel(
@@ -103,15 +106,14 @@ class Start:
 
 
 class GameGUI:
-    """Game screen class displaying a question, hearts, and answer 
-    mechanism."""
+    """Game screen class displaying question, hearts, and answer."""
+
     def __init__(
         self, master, question, choices, answer_index, on_next, score,
         max_lives, mode="easy", answer_checker=None, correct_text=None,
         hearts_imgs=None, question_number=1
     ):
-        """Initializes the game screen with a question, hearts for lives, score
-        display, and answer options."""
+        """Initialize the game with question, hearts, score, and answer."""
         self.frame = ctk.CTkFrame(master)
         self.frame.pack(expand=True, fill="both")
         self.hearts_imgs = hearts_imgs or []
@@ -153,6 +155,7 @@ class GameGUI:
         self.answer_index = answer_index
         self.answer_checker = answer_checker
         self.correct_text = correct_text
+        self.last_user_answer = None
         if mode == "easy":
             self.grid_frame = ctk.CTkFrame(self.frame)
             self.grid_frame.pack(pady=10)
@@ -160,7 +163,7 @@ class GameGUI:
             for idx, choice in enumerate(choices):
                 btn = ctk.CTkButton(
                     self.grid_frame, text=choice, font=("Arial", 18),
-                    command=lambda i=idx: self.check_answer(i)
+                    command=lambda x=idx: self.check_answer(x)
                 )
                 row, col = divmod(idx, 2)
                 btn.grid(
@@ -208,7 +211,7 @@ class GameGUI:
             self.next_button.pack_forget()
 
     def update_hearts(self, hearts_imgs):
-        """Updates the displayed hearts (lives) images."""
+        """Update the displayed hearts (lives) images."""
         for i, label in enumerate(self.hearts_labels):
             if len(hearts_imgs) > i:
                 try:
@@ -222,8 +225,7 @@ class GameGUI:
                     pass
 
     def check_answer(self, selected_index):
-        """Checks if the selected answer is correct and updates button 
-        colors."""
+        """Check if the selected answer is correct and update button colors."""
         if self.answered:
             return
         self.answered = True
@@ -239,7 +241,7 @@ class GameGUI:
         self.next_button.pack()
 
     def check_text_answer(self):
-        """Checks the text input answer for hard mode questions."""
+        """Check the text input answer for hard mode questions."""
         if self.answered:
             return
         user_input = self.entry_var.get().strip()
@@ -261,7 +263,7 @@ class GameGUI:
             self.selected_correct = True
         else:
             self.error_label.configure(
-                text=(f"Incorrect. Correct answer: {correct_text}"),
+                text=f"Incorrect. Correct answer: {correct_text}",
                 text_color="red", font=("Arial", 22)
             )
         self.answered = True
@@ -270,16 +272,16 @@ class GameGUI:
         self.next_button.pack()
 
     def next_question(self):
-        """Calls the callback to show the next question."""
+        """Call the callback to show the next question."""
         self.frame.destroy()
         self.on_next(self.selected_correct)
 
 
 class GUI:
-    """Game application class that initializes the customtkinter root 
-    window."""
+    """Game application class that initializes the customtkinter window."""
+
     def __init__(self):
-        """Initializes the customtkinter root window and quiz state."""
+        """Initialize the customtkinter root window and quiz state."""
         ctk.set_appearance_mode("system")
         ctk.set_default_color_theme("blue")
         self.root = ctk.CTk()
@@ -365,9 +367,12 @@ class GUI:
         self.show_question()
 
     def show_question(self, correct_last=None):
-        """Display the next quiz question or show the final score if no 
-        questions remain. Handles score/lives update and sets up the answer 
-        checker for hard mode."""
+        """Display the next quiz question.
+
+        Or show the final score if no questions remain, 
+        Handles score/lives update and sets up the answer
+        checker for hard mode.
+        """
         if not self.questions:
             self.questions_engine = Questions(
                 "questions.txt"
@@ -390,16 +395,16 @@ class GUI:
         mode = self.difficulty
         correct_text = None
         if mode == "hard":
+
             def normalize(s):
-                """Normalize a string for comparison, removing accents and \
-                case."""
+                """Normalize a string, removing accents and case."""
                 return ''.join(
                     c for c in unicodedata.normalize('NFD', s.lower().strip())
                     if unicodedata.category(c) != 'Mn'
                 )
+
             def answer_checker_func(user_input, correct_answer):
-                """Check if user input matches the correct answer, \
-                accent/case-insensitive."""
+                """Check if user input matches the correct answer."""
                 return normalize(user_input) == normalize(correct_answer)
             correct_text = choices[answer_index]
         hearts_paths = self.score_manager.get_hearts()
@@ -426,7 +431,9 @@ class GUI:
 
     def _on_next_question(self, selected_correct):
         """Handle transition to the next question after an answer is given.
-        Records the user's answer and updates the answered questions list."""
+
+        Records the user's answer and updates the answered questions list.
+        """
         if hasattr(self.game_screen, 'last_user_answer'):
             self.last_user_answer = self.game_screen.last_user_answer
         if hasattr(self, 'current_q') and self.current_q:
@@ -445,8 +452,8 @@ class GUI:
         self.show_question(selected_correct)
 
     def show_final_score(self):
-        """Display the final score screen, leaderboard, and high score entry if
-        applicable."""
+        """Display the final score screen, leaderboard, and name entry."""
+
         if self.game_screen and self.game_screen.frame.winfo_exists():
             self.game_screen.frame.destroy()
         self.game_screen = None
@@ -455,7 +462,7 @@ class GUI:
         label = ctk.CTkLabel(
             frame,
             text=(f"Game Over!\nYour score: "
-                f"{self.score_manager.get_score()}"),
+                  f"{self.score_manager.get_score()}"),
             font=("Arial", 28)
         )
         label.pack(pady=20)
@@ -505,6 +512,7 @@ class GUI:
 
             def save_highscore():
                 """Save the user's high score entry to the leaderboard."""
+
                 if self._highscore_saved:
                     return
                 name = name_var.get().strip()
@@ -554,6 +562,7 @@ class GUI:
 
     def view_results(self):
         """Display the results of the quiz in a popup window."""
+
         results_text = self._get_results_text()
         results_window = ctk.CTkToplevel(self.root)
         results_window.title("Maori Game Results")
@@ -582,10 +591,13 @@ class GUI:
         self.root.wait_window(results_window)
 
     def _get_results_text(self):
-        lines = []
-        lines.append(f"Mode: {self.difficulty.capitalize()}")
-        lines.append(f"Score: {self.score_manager.get_score()}")
-        lines.append("")
+        """Generate the results text for the quiz."""
+
+        lines = [
+            f"Mode: {self.difficulty.capitalize()}",
+            f"Score: {self.score_manager.get_score()}",
+            ""
+        ]
         for idx, result in enumerate(self.answered_questions, 1):
             q = result['question']
             choices = result['choices']
@@ -601,29 +613,31 @@ class GUI:
                 lines.append(f"  Your answer: {user_ans_display}")
                 lines.append(f"  Correct answer: {choices[correct_idx]}")
             else:
-                for i, choice_text in enumerate(choices):
+                for choice_idx, choice_text in enumerate(choices):
                     marker = ''
-                    if user_ans_val is not None and i == user_ans_val:
+                    if user_ans_val is not None and choice_idx == user_ans_val:
                         marker += ' << Your answer'
-                    if i == correct_idx:
+                    if choice_idx == correct_idx:
                         marker += ' (Correct)'
                     lines.append(
-                        f"   {i+1}. {choice_text} {marker.strip()}"
+                        f"   {choice_idx+1}. {choice_text} {marker.strip()}"
                     )
             lines.append("")
         return "\n".join(lines)
 
     def export_results(self):
         """Export the quiz results to a text file."""
+
         filename = "quiz_results.txt"
         results_text_for_export = self._get_results_text()
         try:
             with open(filename, 'w', encoding='utf-8') as f:
                 f.write(results_text_for_export)
             current_frame = None
+            is_final_score_frame = False
             for widget in self.root.winfo_children():
                 if (isinstance(widget, ctk.CTkFrame) and
-                    widget.winfo_ismapped()):
+                        widget.winfo_ismapped()):
                     for child in widget.winfo_children():
                         if (isinstance(child, ctk.CTkLabel) and
                                 "Game Over!" in child.cget("text")):
@@ -639,9 +653,15 @@ class GUI:
                     font=("Arial", 16), text_color="green"
                 )
                 export_label.pack(pady=10)
+
                 def open_file():
+                    """Open the exported results file."""
+
                     os.startfile(os.path.abspath(filename))
+
                 def open_folder():
+                    """Open the folder containing the exported file."""
+
                     folder = os.path.dirname(os.path.abspath(filename))
                     subprocess.Popen(f'explorer "{folder}"')
                 btn_frame = ctk.CTkFrame(current_frame, fg_color="transparent")
@@ -675,6 +695,8 @@ class GUI:
         self.root.mainloop()
 
     def _get_leaderboard_text(self):
+        """Generate the leaderboard text for display."""
+
         leaderboard = self.highscore_manager.get_leaderboard()
         text = "Leaderboard (Top 10):\n"
         text += f"{'#':<3}{'Name':<13}{'Score':<7}{'Difficulty':<10}\n"
@@ -685,10 +707,11 @@ class GUI:
         return text.strip()
 
     def _restart_quiz(self, frame_to_destroy):
+        """Destroy the current frame and resetting state."""
+
         frame_to_destroy.destroy()
         self.highscore_manager.load_highscores()
         self.start_screen = Start(
             self.root, self.show_game_screen,
             leaderboard=self.highscore_manager.get_leaderboard()
         )
-
