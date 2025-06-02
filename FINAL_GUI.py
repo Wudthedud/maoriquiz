@@ -4,12 +4,13 @@ import random
 import unicodedata
 import os
 import subprocess
-import customtkinter as ctk
+import sys
+sys.path.insert(0, os.path.abspath("pillow_bundle"))
 from PIL import Image
+sys.path.insert(0, os.path.abspath("customtkinter-5.2.2"))
+import customtkinter as ctk
 from FINAL_quizengine import Questions
 from FINAL_score import HighScore, ScoreExport, ScoreManager
-
-
 
 class Start:
     """Start screen class for the Maori Quiz Game."""
